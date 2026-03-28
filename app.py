@@ -1,11 +1,10 @@
-from google import genai
-from google.genai import types
+from groq import Groq
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 SYSTEM_PROMPT = """
 You are the Careby parenting coach — a warm, experienced, and deeply compassionate guide for parents at every stage of their journey.
@@ -43,23 +42,28 @@ Your knowledge is grounded in:
 - Positive discipline — boundaries with love not fear
 """
 
-conversation_history = []
+conversation_history = [
+    {"role": "system", "content": SYSTEM_PROMPT}
+]
 
 def ask_coach(user_message):
-    conversation_history.append(
-        types.Content(role="user", parts=[types.Part(text=user_message)])
+    conversation_history.append({
+        "role": "user",
+        "content": user_message
+    })
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=conversation_history
     )
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT),
-        contents=conversation_history
-    )
+    reply = response.choices[0].message.content
 
-    reply = response.text
-    conversation_history.append(
-        types.Content(role="model", parts=[types.Part(text=reply)])
-    )
+    conversation_history.append({
+        "role": "assistant",
+        "content": reply
+    })
+
     return reply
 
 def main():
