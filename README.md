@@ -2,36 +2,44 @@
 
 > "Let's make this world a better place for new life"
 
-Careby is a compassionate AI parenting coach that helps parents navigate the emotional challenges of raising children with love, patience, and understanding.
+Careby is a compassionate AI parenting coach that helps parents navigate 
+the emotional challenges of raising children with love, patience, and 
+understanding.
+
+Most parents face their hardest moments completely alone. Professional 
+parenting guidance is expensive and inaccessible. Careby sits with parents 
+at 2am when they feel lost — warm, non-judgmental, and actually helpful.
+
+## How it works
+
+Every response follows a 5-step care framework:
+1. Acknowledges the parent's emotions first
+2. Helps understand what the child is experiencing
+3. Explains the developmental impact of the situation
+4. Offers gentle, actionable steps
+5. Closes with warmth and encouragement
+
+Grounded in attachment theory, conscious parenting, and positive discipline.
 
 ## Setup
 
 1. Clone this repo
 2. Install dependencies:
-```bash
-pip install google-generativeai python-dotenv
-```
-
-3. Create a `.env` file in the root folder:
-```
-GEMINI_API_KEY=your_key_here
-```
-
+pip install groq python-dotenv
+3. Create a `.env` file:
+GROQ_API_KEY=your_key_here
 4. Run:
-```bash
 python app.py
-```
-
-## What it does
-
-- Acknowledges the parent's emotions first
-- Helps parents understand what their child is experiencing
-- Explains how actions affect the child's subconscious development
-- Gives gentle, actionable steps
-- Ends every response with warmth and encouragement
 
 ## Built with
 
 - Python
-- Google Gemini API
-- Grounded in attachment theory, conscious parenting, and positive discipline
+- Groq API
+- Llama 3 (via Groq)
+
+## About the author
+
+Built by Akshay Rai, CS student.
+
+Want to build your own AI chatbot? Check out my beginner guide:
+https://akshayrai07.gumroad.com/l/ai-chatbot-python-guide
