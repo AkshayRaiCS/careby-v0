@@ -41,5 +41,3 @@ python app.py
 
 Built by Akshay Rai, CS student.
 
-Want to build your own AI chatbot? Check out my beginner guide:
-https://akshayrai07.gumroad.com/l/ai-chatbot-python-guide
